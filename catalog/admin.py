@@ -12,7 +12,7 @@ admin.site.register(Language)
 class BooksInline(admin.TabularInline):
     model = Book
     extra = 0
-    exclude = ('isbn', 'summary')
+    # exclude = ('isbn', 'summary')
     
 class AuthorAdmin(admin.ModelAdmin):
     list_display = ('last_name', 'first_name',
@@ -35,13 +35,13 @@ class BookAdmin(admin.ModelAdmin):
 # Register the Admin classes for BookInstance using the decorator
 @admin.register(BookInstance)
 class BookInstanceAdmin(admin.ModelAdmin):
-    list_display = ('id', 'status', 'due_back', 'book', 'imprint')
+    list_display = ('id', 'status', 'due_back','borrower', 'book', 'imprint')
     list_filter = ('status', 'due_back')
     fieldsets = (
         (None, {
             'fields': ('book', 'imprint', 'id')
         }),
         ('Availability', {
-            'fields': ('status', 'due_back')
+            'fields': ('status', 'due_back','borrower')
         }),
     )

@@ -7,16 +7,13 @@
     {% for author in author_list %}
       <li>
         <a href="{{ author.get_absolute_url }}">{{ author }}
-            {% if  author.date_of_birth %}
-                ( {{ author.date_of_birth }} )
-            {% endif %} 
-        </a> 
-            
-        
-        
+        {% if  author.date_of_birth %}
+            ( {{ author.date_of_birth }} )
+        {% endif %} 
+        </a>
       </li>
     {% endfor %}
-  </ul>
+    </ul>
   {% else %}
     <p>There are no books in the library.</p>
   {% endif %}
